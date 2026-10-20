@@ -78,3 +78,5 @@ Screenshots in `listing/` show the actual settings page in an isolated Firefox 1
 Captions:
 - routes.png: Set URL rules for your work, study, and project groups.
 - preview.png: Preview where a link will go before opening it.
+
+Both screenshots and the custom icon were uploaded through Developer Hub. The two screenshot records were verified after saving, then captioned. Saved captions: “Local URL rules keep work and study links organised.” and “Tab Router settings with example work and study destinations.”
