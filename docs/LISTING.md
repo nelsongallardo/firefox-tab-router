@@ -7,7 +7,7 @@ Help Firefox users who organise work, study, and projects with native tab groups
 ## Store metadata
 
 - Name: Tab Router
-- Suggested slug: tab-router-native-groups
+- Submitted slug: tab-router-native-groups
 - Category: Tabs
 - License: MIT
 - Homepage: https://github.com/nelsongallardo/firefox-tab-router
@@ -68,3 +68,13 @@ Alternatives:
 CTA candidates for owned documentation: “Add to Firefox” (chosen, matches the store), “Install Tab Router” (clear product name), “Set up your first route” (useful after installation). The AMO button itself is controlled by Mozilla.
 
 Claims are grounded in the manifest, routing implementation, and PRIVACY.md. “No tracking” describes this extension, not Firefox or the linked websites. No security guarantee, usage statistic, or endorsement is claimed.
+
+## Submission record
+
+On 2026-10-20, Mozilla confirmed **Version Submitted** for listed version 1.0.1 (version ID 6598777). Publication remains pending. The store slug is `tab-router-native-groups`; do not describe the listing as live until verified.
+
+Screenshots in `listing/` show the actual settings page in an isolated Firefox 158 profile with fictional demo rules. Reproduce with `FIREFOX_BINARY=/path/to/firefox node scripts/capture-listing.mjs`. The capture script adds permissions only to a disposable extension copy, never to the submission ZIP.
+
+Captions:
+- routes.png: Set URL rules for your work, study, and project groups.
+- preview.png: Preview where a link will go before opening it.

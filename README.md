@@ -14,7 +14,7 @@ Plain JavaScript. No runtime dependencies, remote code, analytics, or network re
 
 ## Install
 
-**Release status (2026-10-20):** version 1.0.1 is being prepared for the public Firefox Add-ons catalogue. Version 1.0.0 was submitted for unlisted signing and is awaiting review. No signed installable release is available yet.
+**Release status (2026-10-20):** version 1.0.1 has been submitted to the public Firefox Add-ons catalogue and is awaiting publication. Mozilla will email the developer when it is published. Version 1.0.0 was previously submitted for unlisted signing. No signed installable release is available yet.
 
 Once Mozilla approves the public listing, install it using **Add to Firefox** on its store page. Firefox will manage updates according to your browser settings.
 

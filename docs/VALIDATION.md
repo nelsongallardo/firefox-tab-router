@@ -25,3 +25,14 @@ The declared minimum is Firefox 142, validated by Mozilla’s linter; live tests
 - Submitted extension source: commit `60f8c62`.
 - Unsigned ZIP SHA-256: `2c96b6f099baaa2ceab54e847de519cd93de49be4529fc145f56581413e04fbb`.
 - GitHub CI passed for the submitted source.
+
+## 1.0.1 — public listing, 2026-10-20
+
+- Runtime behavior and permissions unchanged from 1.0.0; manifest changes only the version.
+- Mozilla web-ext lint: zero errors, notices, or warnings. Build passed.
+- Confirmed all eight ZIP entries match the committed extension source.
+- Submitted source commit: `cf19b06`.
+- Unsigned ZIP SHA-256: `3c82f6524171b58666d18c4ad48d1c1e748b4c8c16b460e6ba5fd5ff282a7149`.
+- Mozilla confirmed **Version Submitted** on the listed channel, version ID 6598777; Developer Hub shows **Awaiting Review**.
+- Listing slug: `tab-router-native-groups`. Public installation and signed-install verification remain pending publication.
+- Actual settings UI rendered in isolated Firefox 158 with demo rules. The routes and destination-preview PNGs were visually inspected: fields, controls, and matching result render correctly in dark mode. No personal browsing data appears in the assets.
