@@ -1,0 +1,70 @@
+import "./background.js";
+const results = [];
+const assert = (condition, message) => { if (!condition) throw new Error(message); };
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+async function waitFor(check, message) {
+  for (let i = 0; i < 100; i++) {
+    if (await check()) return;
+    await sleep(50);
+  }
+  throw new Error(message);
+}
+const rule = { prefix: "https://example.com/project", group: "integration-work", color: "green" };
+try {
+  // Let Firefox finish the install-time options-page navigation before
+  // creating test tabs; otherwise openOptionsPage can reuse a loading tab.
+  await waitFor(async () => (await browser.tabs.query({})).some(tab =>
+    tab.url === browser.runtime.getURL("options.html") && tab.status === "complete"),
+    "Install-time settings page did not open");
+  await browser.storage.local.set({ settings: { enabled: true, rules: [rule] } });
+  const first = await browser.tabs.create({ url: "https://example.com/project/pull/1", active: true });
+  await waitFor(async () => (await browser.tabs.get(first.id)).groupId !== -1, "First tab was not grouped");
+  const initial = await browser.tabs.get(first.id);
+  const group = await browser.tabGroups.get(initial.groupId);
+  assert(group.title === rule.group, "Incorrect group title");
+  results.push("New-tab event creates the named native group");
+
+  const others = await Promise.all([2,3,4].map(id => browser.tabs.create({
+    url: `https://example.com/project/pull/${id}`, active: false, windowId: first.windowId
+  })));
+  await waitFor(async () => (await Promise.all(others.map(tab => browser.tabs.get(tab.id))))
+    .every(tab => tab.groupId === group.id), "Concurrent tabs did not reuse group");
+  assert((await browser.tabGroups.query({})).filter(item => item.title === rule.group).length === 1,
+    "Duplicate group created");
+  results.push("Concurrent tab events reuse one group");
+
+  const unrelated = await browser.tabs.create({ url: "https://example.com/project-other", active: false });
+  await sleep(400);
+  assert((await browser.tabs.get(unrelated.id)).groupId === -1, "Path boundary crossed");
+  results.push("Similar repository names remain ungrouped");
+
+  await browser.tabs.update(unrelated.id, { pinned: true, url: "https://example.com/project/pinned" });
+  await sleep(400);
+  assert((await browser.tabs.get(unrelated.id)).pinned, "Pinned tab was unpinned");
+  results.push("Pinned tabs remain pinned");
+
+  await browser.tabs.ungroup(first.id);
+  await sleep(400);
+  assert((await browser.tabs.get(first.id)).groupId === -1, "Manual move was overridden");
+  await browser.tabs.update(first.id, { url: "https://example.com/project/pull/10" });
+  await waitFor(async () => (await browser.tabs.get(first.id)).groupId === group.id, "URL change did not route");
+  results.push("Manual moves survive until the next URL change");
+
+  const otherWindow = await browser.windows.create({ url: "about:blank", focused: true });
+  const cross = await browser.tabs.create({
+    url: "https://example.com/project/pull/20", windowId: otherWindow.id, active: true
+  });
+  await waitFor(async () => (await browser.tabs.get(cross.id)).groupId === group.id, "Cross-window route failed");
+  assert((await browser.tabs.get(cross.id)).windowId === group.windowId, "Wrong destination window");
+  results.push("Cross-window links join the unique existing group");
+
+  await browser.storage.local.set({ settings: { enabled: false, rules: [rule] } });
+  const paused = await browser.tabs.create({ url: "https://example.com/project/pull/30" });
+  await sleep(400);
+  assert((await browser.tabs.get(paused.id)).groupId === -1, "Pause did not take effect");
+  results.push("Paused routing leaves new tabs alone");
+  const info = await browser.runtime.getBrowserInfo();
+  await fetch(__ENDPOINT__, { method: "POST", body: JSON.stringify({ ok: true, firefox: info.version, results }) });
+} catch (error) {
+  await fetch(__ENDPOINT__, { method: "POST", body: JSON.stringify({ ok: false, results, error: error.message }) });
+}

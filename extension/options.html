@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tab Router · Settings</title>
+  <link rel="stylesheet" href="options.css">
+  <script type="module" src="options.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="wordmark"><img src="icon.svg" width="32" height="32" alt=""> TAB ROUTER <span>FIREFOX</span></div>
+      <p class="eyebrow">A place for every project</p>
+      <h1>Open a link.<br>Land in the right group.</h1>
+      <p class="intro">Give your project a URL and a destination. Matching tabs find their way there, wherever you opened the link.</p>
+    </header>
+    <form id="settings">
+      <div class="section-heading">
+        <h2>Your routes <span id="count">0</span></h2>
+        <label class="toggle"><input id="enabled" type="checkbox" checked> Automatic routing</label>
+      </div>
+      <p class="hint">First matching rule wins. Put specific repository paths above broader website rules.</p>
+      <div id="rules"></div>
+      <p id="empty">No routes yet. Add your first project below.</p>
+      <div class="actions">
+        <button type="button" id="add" class="secondary">+ Add a route</button>
+        <button type="submit" class="primary">Save changes <span aria-hidden="true">↗</span></button>
+      </div>
+      <p id="status" role="status" aria-live="polite"></p>
+    </form>
+    <section class="tester" aria-labelledby="test-heading">
+      <div><p class="eyebrow">Try it first</p><h2 id="test-heading">Where will this link go?</h2></div>
+      <label for="test-url">Test URL against the rules above</label>
+      <input id="test-url" type="url" placeholder="https://github.com/example/project/pull/42" spellcheck="false">
+      <p id="test-result" role="status">Paste a link to preview its destination. No tab will be moved.</p>
+    </section>
+    <details>
+      <summary>How routing works</summary>
+      <p>A rule matches the exact website and the path below it. For example, <code>https://github.com/example/project</code> includes that repository’s PRs and issues, but not <code>project-other</code>. Query strings and fragments on links are ignored. Rules do not use wildcards.</p>
+      <p>Group names are case-sensitive. An existing group in the tab’s window is preferred. Otherwise, a single matching group in another window receives the tab. If several other windows have that name, the tab stays put and the toolbar shows “?”. Give those groups distinct names to resolve this.</p>
+      <p>If no open group matches, one is created. Saved and closed groups are not reopened. Existing group colors are preserved; the selected color is used for new groups.</p>
+      <p>Saving applies to future tab openings and URL changes. Existing tabs are not swept into groups. Pinned and private tabs are skipped. Manual moves are respected until the next URL change. Browser session restoration may produce new-tab events.</p>
+    </details>
+    <footer><span class="dot"></span> Rules stay on this device. No tracking. No network requests.</footer>
+  </main>
+</body>
+</html>
