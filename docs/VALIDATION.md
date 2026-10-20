@@ -16,3 +16,12 @@
 - The packaged ZIP contains only the eight files in `extension/`. Development dependencies and the test-only localhost reporting code are excluded.
 
 The declared minimum is Firefox 142, validated by Mozilla’s linter; live tests were performed on Firefox 158, not every supported release. Ambiguous-window behavior and stale-event cancellation are covered by mocked tests. Manual visual QA and signed-install verification are recorded separately when performed.
+
+## Mozilla submission
+
+- Version 1.0.0 submitted on 2026-10-20 using **On your own** (unlisted) distribution, Firefox desktop only.
+- Mozilla's upload validation returned **no errors or warnings**.
+- Submission completed with **Version Signature Pending**. Signed installation and release publication remain pending until Mozilla supplies the signed XPI.
+- Submitted extension source: commit `60f8c62`.
+- Unsigned ZIP SHA-256: `2c96b6f099baaa2ceab54e847de519cd93de49be4529fc145f56581413e04fbb`.
+- GitHub CI passed for the submitted source.

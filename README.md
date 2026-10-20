@@ -14,6 +14,8 @@ Plain JavaScript. No runtime dependencies, remote code, analytics, or network re
 
 ## Install
 
+**Release status (2026-10-20):** version 1.0.0 has been submitted to Mozilla for unlisted signing and is awaiting its signature. No signed installable release is available yet. Development installation is available below.
+
 This extension is distributed **unlisted**: Mozilla signs it, but it does not appear in the public Firefox Add-ons catalogue. Its source is public here.
 
 1. Download the signed `.xpi` from [GitHub Releases](https://github.com/nelsongallardo/firefox-tab-router/releases), when available.
