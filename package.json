@@ -1,6 +1,6 @@
 {
   "name": "firefox-tab-router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "description": "Route links to native Firefox tab groups using local URL rules.",
@@ -14,8 +14,8 @@
     "lint": "web-ext lint --source-dir extension --warnings-as-errors",
     "build": "web-ext build --source-dir extension --artifacts-dir artifacts --overwrite-dest",
     "start": "web-ext run --source-dir extension",
-    "sign": "web-ext sign --source-dir extension --artifacts-dir artifacts --channel unlisted",
-    "check": "npm test && npm run lint"
+    "check": "npm test && npm run lint",
+    "sign:unlisted": "web-ext sign --source-dir extension --artifacts-dir artifacts --channel unlisted"
   },
   "devDependencies": {
     "web-ext": "10.8.0"

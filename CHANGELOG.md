@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1
+
+- Prepare the first public Firefox Add-ons listing.
+- Same routing behavior and permissions as 1.0.0.
+
 ## 1.0.0
 
 - Route HTTP(S) URLs to native Firefox tab groups with origin and path boundaries.

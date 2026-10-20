@@ -19,4 +19,4 @@ This describes extension behavior, not all browser activity. Firefox can contact
 
 ## Updates
 
-Updates are installed manually. Review release notes and source changes before installing a new version. Open source and Mozilla signing are useful checks, not guarantees that software has no defects.
+For installations from Firefox Add-ons, Firefox manages updates according to your browser settings. Self-distributed builds can be updated manually. Review release notes and source changes before installing a new version. Open source and Mozilla signing are useful checks, not guarantees that software has no defects.

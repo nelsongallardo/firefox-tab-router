@@ -14,19 +14,15 @@ Plain JavaScript. No runtime dependencies, remote code, analytics, or network re
 
 ## Install
 
-**Release status (2026-10-20):** version 1.0.0 has been submitted to Mozilla for unlisted signing and is awaiting its signature. No signed installable release is available yet. Development installation is available below.
+**Release status (2026-10-20):** version 1.0.1 is being prepared for the public Firefox Add-ons catalogue. Version 1.0.0 was submitted for unlisted signing and is awaiting review. No signed installable release is available yet.
 
-This extension is distributed **unlisted**: Mozilla signs it, but it does not appear in the public Firefox Add-ons catalogue. Its source is public here.
+Once Mozilla approves the public listing, install it using **Add to Firefox** on its store page. Firefox will manage updates according to your browser settings.
 
-1. Download the signed `.xpi` from [GitHub Releases](https://github.com/nelsongallardo/firefox-tab-router/releases), when available.
-2. In Firefox, open `about:addons`, choose the gear menu → **Install Add-on From File**, and select the `.xpi`.
-3. Review the permissions and install.
-4. The settings page opens. Add a URL and the exact name of your existing group, then **Save changes**.
-5. Open a matching link from another app to try it.
+After installation, the settings page opens. Add a URL and the exact name of your existing group, then **Save changes**. Open a matching link from another app to try it.
 
 An unsigned `.zip` is a submission/development package, **not** an installable release for normal Firefox. For development, open `about:debugging#/runtime/this-firefox`, choose **Load Temporary Add-on**, and select `extension/manifest.json`. Temporary installation lasts until Firefox restarts.
 
-Updates are manual: install a newer signed `.xpi` with the same extension ID. Your saved rules are retained. There is no automatic update endpoint.
+If a signed `.xpi` is provided through [GitHub Releases](https://github.com/nelsongallardo/firefox-tab-router/releases), it can also be installed through `about:addons` → gear menu → **Install Add-on From File**. Keep the extension ID unchanged to retain your saved rules.
 
 ## Rules and behavior
 
@@ -91,7 +87,7 @@ The router serializes operations to avoid duplicate groups when several links op
 
 ## Signing and releases
 
-See [docs/RELEASING.md](docs/RELEASING.md) for Mozilla’s unlisted signing process, secret handling, and the release checklist. See [docs/TESTING.md](docs/TESTING.md) for browser checks.
+See [docs/RELEASING.md](docs/RELEASING.md) for Mozilla’s public listing and signing process, secret handling, and the release checklist. See [docs/TESTING.md](docs/TESTING.md) for browser checks.
 
 ## Contributing
 
